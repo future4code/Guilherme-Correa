@@ -27,7 +27,6 @@ function calculaAreaRetangulo() {
   const largura = prompt("Insira a largura do retângulo:")
 
   console.log(altura * largura)
-
 }
 
 // Exercício 2
@@ -55,88 +54,98 @@ function imprimeInformacoesUsuario() {
   const nomeUsuario = prompt("Qual seu nome?")
   const idadeUsuario = prompt("Qual a sua idade?")
   const emailUsuario = prompt("Qual seu e-mail?")
-
-  console.log("Meu nome é " + nomeUsuario + ", tenho " + idadeUsuario + " anos, e o meu email é "+ emailUsuario + ".")
+  
+  console.log("Meu nome é " + nomeUsuario + ", tenho " + idadeUsuario + " anos, e o meu email é " + emailUsuario +".")
 }
 
 // Exercício 5
 function imprimeTresCoresFavoritas() {
   // escreva seu código aqui
-  let cor1 = prompt('Qual sua cor favorita?')
-  let cor2 = prompt('Qual sua segunda cor favorita?')
-  let cor3 = prompt('Qual sua terceira cor favorita?')
-  let cores = [cor1, cor2, cor3]
-  console.log(cores)
+  let coresFavoritas = [0, 1, 2]
+  
+  coresFavoritas[0] = prompt('Qual sua cor favorita?')
+  coresFavoritas[1] = prompt('Qual sua segunda cor favorita?')
+  coresFavoritas[2] = prompt('Qual sua terceira cor favorita?')
 
+  console.log(coresFavoritas)
 }
 
 // Exercício 6
 function retornaStringEmMaiuscula() {
   // escreva seu código aqui
-  const palavra = prompt("escreva uma palavra")
 
-  console.log(palavra.toUpperCase())
+  const palavraMaiuscula = prompt("Escreva uma palavra:")
+
+  console.log(palavraMaiuscula.toUpperCase())
 }
 
 // Exercício 7
 function calculaIngressosEspetaculo() {
   // escreva seu código aqui
-  const custoEspetaculo = prompt("Qual o custo do espetáculo de teatro?")
-  const valorIngresso = prompt("Qual o valor do ingresso?")
+  const custoDoEspetaculo = prompt("Qual o custo de um espetáculo de teatro?")
+  const valorIngresso = prompt("Qual o valor de cada ingresso?")
 
-  const arrecadacao = custoEspetaculo / valorIngresso
-
-  console.log(arrecadacao)
+  console.log(custoDoEspetaculo/valorIngresso)
 }
 
 // Exercício 8
 function checaStringsMesmoTamanho() {
   // escreva seu código aqui
-  const palavra1 = prompt("escreva uma palavra:")
-  const palavra2 = prompt("escreva outra palavra:")
+  let palavraUm = prompt("Escreva uma palavra:")
+  let palavraDois = prompt("Escreva outra palavra:")
 
+  let tamanhoUm = palavraUm.length
+  let tamanhoDois = palavraDois.length
+
+  console.log(tamanhoUm === tamanhoDois)
 }
 
 // Exercício 9
 function checaIgualdadeDesconsiderandoCase() {
   // escreva seu código aqui
-  const palavra1 = prompt("escreva uma palavra:")
-  const palavra2 = prompt("escreva outra palavra:")
+
+  let palavraUm = prompt("Escreva uma palavra:")
+  let palavraDois = prompt("Escreva outra palavra:")
+
+  console.log(palavraUm.toUpperCase() === palavraDois.toUpperCase())
 }
 
 // Exercício 10
 function checaRenovacaoRG() {
   // escreva seu código aqui
-  const anoAtual = Number(prompt("Escreva o ano atual:"))
-  const anoNascimento = Number(prompt("Escreva o ano em que nasceu:"))
-  const anoIdentidade = Number(prompt("escreva o ano em que seu RG foi emitido"))
+  let anoAtual = Number(prompt("Escreva o Ano Atual:"))
+  let anoNascimento = Number(prompt("Escreva o Ano em que Nasceu:"))
+  let anoRG = Number(prompt("Escreva o Ano que seu Rg foi emitido:"))
 
-  const renovacao20Anos = anoAtual - anoNascimento <= 20 && anoAtual - anoIdentidade <= 5
-  const renovacaoMais20 = anoAtual - anoNascimento > 20 <= 50 && anoAtual - anoIdentidade <= 10
-  const renovacaoMais50 = anoAtual - anoNascimento > 50 && anoAtual - anoIdentidade <= 15
+  let renovacaoIdade = (anoAtual - anoNascimento)
+  let renovacaoRg = (anoAtual - anoRG)
 
-  const renovacaoIdentidade = renovacao20Anos || renovacaoMais20 || renovacaoMais50
-  console.log(renovacaoIdentidade)
+  let renovacao20anos = renovacaoIdade <= 20 && renovacaoRg >= 5
+  let renovacao50anos = renovacaoIdade > 20 && renovacaoIdade <= 50 && renovacaoRg >= 10
+  let renovacaoMais50 = renovacaoIdade > 50 && renovacaoRg >= 15
 
-
+  console.log(renovacao20anos || renovacao50anos || renovacaoMais50)
 }
 
 // Exercício 11
 function checaAnoBissexto() {
   // escreva seu código aqui
-  const ano = prompt("Insir um ano:")
-  const anoBissexto = anoBissexto
+  let anoAtual = Number(prompt("Escreva o Ano Atual:"))
+  let primeiroCalculo = anoAtual % 400 === 0
+  let segundoCalculo = anoAtual % 4 === 0
+  let terceiroCalculo = anoAtual % 100 != 0
 
-
+  console.log((segundoCalculo && terceiroCalculo) || primeiroCalculo)
 }
 
 // Exercício 12
 function checaValidadeInscricaoLabenu() {
   // escreva seu código aqui
-  const maiorIdade = prompt("Você tem mais de 18 anos?")
-  const ensinoMedio = prompt("Você possui ensino médio completo?")
-  const possuiDisponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
+  let idade = prompt("Você tem mais de 18 anos?")
+  let ensinoMedio = prompt("Você possui ensino médio completo?")
+  let disponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
   
+  let aprovado = ((idade === "sim") && (ensinoMedio === "sim") && (disponibilidade === "sim"))
 
-  console.log(maiorIdade && ensinoMedio && possuiDisponibilidade,)
+  console.log(aprovado)
 }
