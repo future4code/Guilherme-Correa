@@ -3,7 +3,6 @@
 // Exercício 0A
 function soma() {
   // escreva seu código aqui
-
   const num1 = prompt('Digite o primeiro número')
   const num2 = prompt('Digite o segundo número')
 
@@ -52,11 +51,10 @@ function calculaIMC() {
 // Exercício 4
 function imprimeInformacoesUsuario() {
   // escreva seu código aqui
-
   const nomeUsuario = prompt("Qual seu nome?")
   const idadeUsuario = prompt("Qual a sua idade?")
   const emailUsuario = prompt("Qual seu e-mail?")
-
+  
   console.log("Meu nome é " + nomeUsuario + ", tenho " + idadeUsuario + " anos, e o meu email é " + emailUsuario +".")
 }
 
@@ -64,6 +62,7 @@ function imprimeInformacoesUsuario() {
 function imprimeTresCoresFavoritas() {
   // escreva seu código aqui
   let coresFavoritas = [0, 1, 2]
+  
   coresFavoritas[0] = prompt('Qual sua cor favorita?')
   coresFavoritas[1] = prompt('Qual sua segunda cor favorita?')
   coresFavoritas[2] = prompt('Qual sua terceira cor favorita?')
@@ -74,6 +73,7 @@ function imprimeTresCoresFavoritas() {
 // Exercício 6
 function retornaStringEmMaiuscula() {
   // escreva seu código aqui
+
   const palavraMaiuscula = prompt("Escreva uma palavra:")
 
   console.log(palavraMaiuscula.toUpperCase())
@@ -98,18 +98,16 @@ function checaStringsMesmoTamanho() {
   let tamanhoDois = palavraDois.length
 
   console.log(tamanhoUm === tamanhoDois)
-
 }
 
 // Exercício 9
 function checaIgualdadeDesconsiderandoCase() {
   // escreva seu código aqui
+
   let palavraUm = prompt("Escreva uma palavra:")
   let palavraDois = prompt("Escreva outra palavra:")
 
   console.log(palavraUm.toUpperCase() === palavraDois.toUpperCase())
-  
- 
 }
 
 // Exercício 10
@@ -127,7 +125,6 @@ function checaRenovacaoRG() {
   let renovacaoMais50 = renovacaoIdade > 50 && renovacaoRg >= 15
 
   console.log(renovacao20anos || renovacao50anos || renovacaoMais50)
-
 }
 
 // Exercício 11
@@ -144,10 +141,10 @@ function checaAnoBissexto() {
 // Exercício 12
 function checaValidadeInscricaoLabenu() {
   // escreva seu código aqui
-
   let idade = prompt("Você tem mais de 18 anos?")
   let ensinoMedio = prompt("Você possui ensino médio completo?")
   let disponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
+  
   let aprovado = ((idade === "sim") && (ensinoMedio === "sim") && (disponibilidade === "sim"))
 
   console.log(aprovado)
