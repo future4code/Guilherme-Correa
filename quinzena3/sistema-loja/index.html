@@ -4,33 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BRUSINHA.COM</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>BRUSINHA.COM: A loja online onde você encontra a sua roupa</title>
 </head>
 <body>
-    <div>
-        <h1>Bem-vind@ ao <em>nome da loja</em>!</h1>
-        <p>Frase de chamada para sua loja</p>
-    </div>
-
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-    </div>
-
-    <div>
-        <!-- ADICIONAR INFORMAÇOES SOBRE SUA LOJINHA -->
-    </div>
-
-    <div>
-        <p>Siga-nos nas redes sociais!</p>
-
-        <div>
-            <img src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
+        <!-- CABEÇALHO -->
+        <div class="cabecalho">
+            <img src="img/lgo.png" alt="logo" class="img-logo">
+            <h1>Bem-vind@ ao BRUSINHA.COM!</h1>
+            <p class="cabecalho-p">A loja online onde você encontra a sua roupa</p>
         </div>
-    </div>
+
+        <!-- MENU -->
+        <div class="menu">
+            <a href="index.html">PÁGINA INICIAL</a> |
+            <a href="ctrl-estoque.html">CONTROLE DE ESTOQUE</a> |
+            <a href="add-produto.html">ADICIONAR PRODUTOS</a> |
+            <a href="funcionarios.html">FUNCIONÁRIOS</a>
+            <a href="vendas.html">VENDAS</a>
+            <a href="historico-de-vendas.html">HISTÓRICO DE VENDAS</a>
+        </div>
+
+
+        <!-- CORPO DO SITE -->
+        <div class="conteudo">
+            <table>
+                <tr>
+                    <th class="conteudo">Novidades</th>
+                    <th class="conteudo">Mais Vendidos</th>
+                    <th class="conteudo">Promoção</th>
+                </tr>
+                <tr>
+                    <td><img src="img/jaquetadecouro.jpg" alt="Jaqueta de Couro Sintetico"/></td>
+                    <td><img src="img/camisetadealgodao.jpg" alt="Camiseta Masculina 100%"/></td>
+                    <td><img src="img/bermudajaena.jpg" alt="Bermuda Jeans Masculina"/></td>
+                </tr>
+                <tr>
+                    <td class="descricao"><a href="index.html">Jaqueta de Couro Sintetico Masculina</a></td>
+                    <td class="descricao"><a href="index.html">Camiseta Masculina 100% Algodão Tam. M</a></td>
+                    <td class="descricao"><a href="index.html">Bermuda Jeans Masculina Azul</a></td>
+                </tr>
+                <tr>
+                    <td> R$: 220,00 </td>
+                    <td> R$: 45,00 </td>
+                    <td> R$: 35,00 </td>
+                </tr>
+            </table>
+
+        </div>
+        <!-- RODAPÉ -->       
+        <div class="rodape">
+            <p>Siga-nos nas redes sociais!</p>
+            <a href="index.html"><img src="https://image.flaticon.com/icons/png/512/25/25305.png" class="img-rodape"/></a>
+            <a href="index.html"><img src="https://image.flaticon.com/icons/png/512/25/25425.png" class="img-rodape"/></a>
+            <a href="index.html"><img src="https://image.flaticon.com/icons/png/512/8/8800.png" class="img-rodape"/></a>
+        </div>
 </body>
 </html>
