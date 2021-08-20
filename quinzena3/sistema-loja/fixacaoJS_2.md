@@ -9,4 +9,5 @@ function calculaPrecoTotal(quantidade) {
   }
   return custoTotalCompra
 }
+
 ```
