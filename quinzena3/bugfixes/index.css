@@ -101,7 +101,11 @@ div:last-child {
 }
 
 table {
+    margin-left:20vw;
     width: 60%;
+    text-align: center;
+
+
 }
 
 td button {
