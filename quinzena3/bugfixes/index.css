@@ -67,8 +67,10 @@ div img {
   **/
 
 #container-de-descricao {
+    padding: 20vh;
     background-color: #2274a5;
     color: white;
+
 }
 
 #container-de-descricao>ol {
