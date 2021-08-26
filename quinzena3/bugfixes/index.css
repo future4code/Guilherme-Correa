@@ -58,7 +58,6 @@ div>p:first-child {
 }
 
 .container {
-    height: 500px;
     text-align: center;
 }
 
@@ -74,7 +73,7 @@ div>p:first-child {
   **/
 
 #container-de-descricao {
-    padding: 20vh 42vw;
+    padding: 15vh 42vw;
     background-color: #2274a5;
     color: white;
 
@@ -87,6 +86,7 @@ div>p:first-child {
 
 #container-para-comprar {
     background-color: #e7eb90;
+    padding: 7vh;
 }
 
 #container-para-comprar>p {
