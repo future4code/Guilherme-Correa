@@ -93,6 +93,8 @@ div>p:first-child {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+
+
 }
 
 
@@ -149,4 +151,9 @@ button:hover {
 
 button:active {
    color: white; 
+}
+
+#submit {
+    margin-top: 30px;
+    margin-left:45vw;
 }
