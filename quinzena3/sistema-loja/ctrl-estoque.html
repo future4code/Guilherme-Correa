@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Controle de Estoque</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>BRUSINHA.COM - Controle de Estoque</title>
 </head>
 <body>
-    <div>
-        <p>BRUSINHA.COM</p>
-    </div>
-    
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-    </div>
-
-    <h2>Controle de Estoque</h2>
-
-    <table>
+        <!-- CABEÇALHO -->
+        <div class="cabecalho">
+            <img src="img/lgo.png" alt="logo" class="img-logo">
+            <h1>CONTROLE DE ESTOQUE: BRUSINHA.COM</h1>
+        </div>
+        <!-- MENU -->
+        <div class="menu">
+            <a href="index.html">PÁGINA INICIAL</a> |
+            <a href="ctrl-estoque.html">CONTROLE DE ESTOQUE</a> |
+            <a href="add-produto.html">ADICIONAR PRODUTOS</a> |
+            <a href="funcionarios.html">FUNCIONÁRIOS</a>
+            <a href="vendas.html">VENDAS</a>
+            <a href="historico-de-vendas.html">HISTÓRICO DE VENDAS</a>
+        </div>
+ <div class="conteudo">
+    <table >
         <tr>
             <th>Foto</th>
             <th>Descrição</th>
@@ -29,41 +32,54 @@
         </tr>
 
         <tr>
-            <td><img src="img/jaquetadecouro.jpg" alt="Jaqueta de Couro Sintetico"/></td>
-            <td> Jaqueta de Couro Sintetico Masculina</td>
+            <td><img src="img/jaquetadecouro.jpg" class="img-estoque" alt="Jaqueta de Couro Sintetico"/></td>
+            <td class="descricao"> Jaqueta de Couro Sintetico Masculina</td>
             <td> R$: 220,00 </td>
             <td> 20 </td>
         </tr>
 
         <tr>
-            <td><img src="img/calcajeans.jpg" alt="Calça Jeans Masculina"/></td>
-            <td> Calça Jeans Masculina </td>
+            <td><img src="img/calcajeans.jpg" class="img-estoque" alt="Calça Jeans Masculina"/></td>
+            <td class="descricao"> Calça Jeans Masculina </td>
             <td> R$: 60,00 </td>
             <td> 20 </td>
         </tr>
 
         <tr>
-            <td><img src="img/camisetadealgodao.jpg" alt="Camiseta Masculina 100%"/></td>
-            <td> Camiseta Masculina 100% Algodão Tam. M</td>
+            <td><img src="img/camisetadealgodao.jpg" class="img-estoque" alt="Camiseta Masculina 100%"/></td>
+            <td class="descricao"> Camiseta Masculina 100% Algodão Tam. M</td>
             <td> R$: 45,00 </td>
             <td> 50 </td>
         </tr>
 
         <tr>
-            <td><img src="img/bermudajaena.jpg" alt="Bermuda Jeans Masculina"/></td>
-            <td> Bermuda Jeans Masculina Azul </td>
-            <td> R$: 35,00 </td>
-            <td> 25 </td>
+            <td><img src="img/bermudajaena.jpg" class="img-estoque" alt="Bermuda Jeans Masculina"/></td>
+            <td class="descricao"> Bermuda Jeans Masculina Azul </td>
+            <td class="descricao"> R$: 35,00 </td>
+            <td class="descricao"> 25 </td>
+        </tr>
+    
+        <tr>
+            <td><img src="img/blusafame.jpg"  class="img-estoque"alt="Blusa Feminina Salmão"></td>
+            <td class="descricao"> Blusa Feminina Salmão </td>
+            <td class="descricao"> R$: 45,00 </td>
+            <td class="descricao"> 20 </td>
+        </tr>
+        <tr>
+            <td><img src="img/blusafame2.jpg"  class="img-estoque"alt="Blusa Feminina Verde"></td>
+            <td class="descricao"> Blusa Feminina Verde </td>
+            <td class="descricao"> R$: 45,00 </td>
+            <td class="descricao"> 20 </td>
         </tr>
         
-        <!-- Crie mais uma linha desta tabela abaixo \/ -->
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
     </table>
-
+</div>
+        <!-- RODAPÉ -->       
+        <div class="rodape">
+            <p>Siga-nos nas redes sociais!</p>
+            <a href="index.html"><img src="https://image.flaticon.com/icons/png/512/25/25305.png" class="img-rodape"/></a>
+            <a href="index.html"><img src="https://image.flaticon.com/icons/png/512/25/25425.png" class="img-rodape"/></a>
+            <a href="index.html"><img src="https://image.flaticon.com/icons/png/512/8/8800.png" class="img-rodape"/></a>
+        </div>
 </body>
 </html>
