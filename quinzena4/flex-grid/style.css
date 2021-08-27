@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    padding: 10px;
+    background-color: mediumvioletred;
+    height: 23px;
+    align-items: center;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 0fr 1fr 0fr;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+header >h2 {
+    margin-left: 15px;
+}
+header > button {
+    width: 60px;
+    font-size: 12px;
+}
+header >img {
+    width: 22px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 3fr 8fr;
+    position: fixed;
+    height:100vh;
+
+}
+
+.container-menu {
+    background-color: #f2d0e0;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 4fr 0fr;
+    grid-template-rows: 0fr 0fr 0fr 0fr;
+    padding: 5px 10px 0 10px;
+    font-size: 13px;
+    row-gap: 7px;
+}
+
+.container-menu >img {
+    width: 20px;
+}
+
+.container-conteudo {
+    display: grid;
+    padding: 10px 10px 10px 10px;
+    grid-template-rows: 0fr 1fr 0f 0f 1f 0f;
+    grid-template-columns: 0fr 0fr 0fr 0fr;
+    justify-items: center;
+    row-gap: 10px;
+    column-gap: 10px;
+    text-align: center;
+}
+
+#produto {
+    box-shadow:5px 5px 5px 5px  darkgray;
+    font-size: smaller;
+}
+
+
+#img-bolo {
+    width: 200px;
+}
+
+
+footer {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
