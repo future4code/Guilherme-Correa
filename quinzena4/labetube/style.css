@@ -1,0 +1,91 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+body {
+    display: grid;
+    grid-template-rows: 70px 1fr 50px;
+}
+
+header {
+    background-color: rgb(6, 95, 6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:  0 20px 0 20px;
+    grid-column:  1/4;
+}
+
+.cabeca {
+    display: flex;
+    align-items: center;
+}
+.img-icone {
+    width: 45px;
+    padding-right:10px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+    gap: 20px;
+}
+
+.videos-destaque> h2 {
+    padding-top: 10px;
+}
+
+.videos-destaque {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 10px;
+    box-shadow: 2px 2px 5px darkgray;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    grid-column:  1/4;
+}
+
+div > h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align:left;
+}
+
+.img-card {
+    width: 100%;
+}
+
+.img-video {
+    width: 100%;
+}
+
+a:link, a:visited, a:active{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+}
+
+footer {
+    background-color: gray;
+    color: black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    grid-column:  1/4;
+}
