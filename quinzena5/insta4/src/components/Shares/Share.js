@@ -30,6 +30,8 @@ class Share extends Component {
 
 	render() {
         const onClickFacebook = () => {this.onClickComp('Facebook')}
+        const onClickTwitter = () => {this.onClickComp('Twitter')}
+        const onClickInstagram = () => {this.onClickComp('Instagram')}
 
 		return <PostRedes>
             <ImgRedes 
@@ -42,12 +44,12 @@ class Share extends Component {
             <ImgRedes 
             alt={'Twitter'} 
             src={Twitter} 
-            onClick={this.onClickComp}/>
+            onClick={onClickTwitter}/>
 
             <ImgRedes 
             alt={'Instagram'} 
             src={Instagram} 
-            onClick={this.onClickComp}/>
+            onClick={onClickInstagram}/>
 
 	</PostRedes>
 	}
