@@ -7,6 +7,11 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import iconeSalvarPreto from '../../img/bookmark_black.svg'
+import iconeSalvarBranco from '../../img/bookmark_border_black.svg'
+import iconShare from '../../img/share.svg'
+import Share from '../Shares/Share'
+
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -45,11 +50,25 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    salvar: false,
+    compartilhar: false,
+    mostrarIcones: false
   }
 
   onClickCurtida = () => {
     console.log('Curtiu!')
+
+    this.setState({
+      numeroCurtidas: this.state.numeroCurtidas + 1,
+      curtido: !this.state.curtido
+    })
+
+    if (this.state.curtido === true) {
+      this.setState({
+        numeroCurtidas: this.state.numeroCurtidas -1
+      })
+    }
   }
 
   onClickComentario = () => {
@@ -59,11 +78,25 @@ class Post extends React.Component {
   }
 
   aoEnviarComentario = () => {
+
     this.setState({
       comentando: false,
       numeroComentarios: this.state.numeroComentarios + 1
     })
   }
+
+  onClickSalvar = () => {
+    this.setState({
+      salvar: !this.state.salvar
+    })
+  }
+
+  onClickShare = () => {
+    this.setState({
+      mostrarIcones: !this.state.mostrarIcones
+    })
+  }
+
 
   render() {
     let iconeCurtida
@@ -78,6 +111,18 @@ class Post extends React.Component {
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    }
+
+    let iconeSalvar
+    if(this.state.salvar) {
+      iconeSalvar = iconeSalvarPreto
+    } else {
+      iconeSalvar = iconeSalvarBranco
+    }
+
+    let obterIcone
+    if (this.state.mostrarIcones) {
+      obterIcone = <Share />
     }
 
     return <PostContainer>
@@ -100,8 +145,22 @@ class Post extends React.Component {
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
+
+        <IconeComContador
+          icone={iconeSalvar}
+          onClickIcone={this.onClickSalvar}
+        />
+
+        <IconeComContador
+          icone={iconShare}
+          onClickIcone={this.onClickShare}
+        />
+
+        
+
       </PostFooter>
       {componenteComentario}
+      {obterIcone}
     </PostContainer>
   }
 }
