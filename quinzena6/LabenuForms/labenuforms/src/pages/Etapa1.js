@@ -1,18 +1,24 @@
 import React from 'react'
-import Styled from 'styled-components'
+import styled from 'styled-components'
 
-const ContainerForm = Styled.div`
+const ContainerForm = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     li {
         padding: 10px;
-        align-items: center;
-        text-align:center;
     }
 `
 
 class Etapa1 extends  React.Component {
+    state = {
+        etapa1: false,
+      };
+    
+      proximaEtapa1 = () => {
+        this.setState({etapa1: true})
+      };
+
     render () {
         return (
             <ContainerForm>
@@ -28,15 +34,17 @@ class Etapa1 extends  React.Component {
                     <input type='email' name='email' id='email'/>
                     
                     <li>Qual a sua escolaridade?</li>
-                    <input type='text' name='escolaridade' id='escolaridade' list='escolaridade'/>
-                        <datalist id="escolaridade"> 
-                            <option value='Ensino Médio Incompleto' /> 
-                            <option value='Ensino Médio Completo' /> 
-                            <option value='Ensino Superior Incompleto' /> 
-                            <option value='Ensino Superior Completo' /> 
-                        </datalist>
+                    < select id="escolaridade"> 
+                        <option value='Ensino Médio Incompleto'>Ensino Médio Incompleto</option>
+                        <option value='Ensino Médio Completo'>Ensino Médio Completo</option>
+                        <option value='Ensino Superior Incompleto'>Ensino Superior Incompleto</option>
+                        <option value='Ensino Superior Completo'>Ensino Superior Completo</option>
+                    </select>
                 </ol>
-                <button type='submit' id='proximaEtapa'>Próxima etapa</button>
+                <button 
+                ype='submit' 
+                id='proximaEtapa'
+                onClick={this.state.proximaEtapa1}>Próxima etapa</button>
             </ContainerForm>
         )  
     }
