@@ -1,30 +1,53 @@
 import React from 'react';
-import './App.css';
-
-
+import styled from 'styled-components';
 import Etapa1 from './pages/Etapa1'
 import Etapa2 from './pages/Etapa2';
 import Etapa3 from './pages/Etapa3';
+import Final from './pages/Final'
+
+const ContainerForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      align-items: center;
+    }
+`
+
 
 class App extends React.Component {
   state = {
-    etapa1: false,
-    etapa2: false,
-    etapa3: false,
-    final: false
+    etapa: 1,
+  }
+
+  proximaEtapa = () => {
+    switch (this.state.etapa) {
+      case 1:
+        return <Etapa1 />
+      case 2:
+        return <Etapa2 />
+      case 3:
+        return <Etapa3 />
+      case 4:
+        return <Final />
+      default:
+        return <Final />
+    }
   };
 
-  proximaEtapa1 = () => {
-    this.setState({etapa1: true})
-  };
+  passarEtapa = (e) => {
+    this.setState({etapa: this.state.etapa + 1})
+  }
 
   render (){
-  return (
-    <div className="App">
-      <Etapa1 />
-    </div>
-  );
-}
-}
 
+  return (
+    <ContainerForm>
+      {this.proximaEtapa()}
+      {this.state.etapa !== 4 && (
+      <button onClick={this.passarEtapa}>Próxima etapa</button>)}
+    </ContainerForm>
+  );
+}}
 export default App;
