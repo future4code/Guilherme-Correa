@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import './styles.css'
+// import './styles.css'
+
+const ContainerBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 const TarefaList = styled.ul`
   padding: 0;
@@ -16,6 +23,13 @@ const InputsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 10px;
+  
+`
+const TarefasItens = styled.div`
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  gap: 10px;
+  border: 1px solid black;
 `
 
 class App extends React.Component {
@@ -36,10 +50,12 @@ class App extends React.Component {
 
   componentDidMount() {
     const buscarDados = () => {
-    const novaTarefa = JSON.parse(localStorage.getItem('tarefas'))
-    console.log(novaTarefa)
+      const novaTarefa = JSON.parse(localStorage.getItem('tarefas'))
+      console.log(novaTarefa)
+      return novaTarefa
     }
-    buscarDados()
+    const dadosSalvos = buscarDados()
+    this.setState({tarefas: dadosSalvos})
   }
 
   onChangeInput = (event) => {
@@ -97,7 +113,7 @@ class App extends React.Component {
     })
 
     return (
-      <div className="App">
+      <ContainerBody>
         <h1>Lista de tarefas</h1>
         <InputsContainer>
           <input value={this.state.inputValue} onChange={this.onChangeInput}/>
@@ -114,29 +130,21 @@ class App extends React.Component {
           </select>
         </InputsContainer>
         <TarefaList>
-          {listaFiltrada.map(tarefa => {
+          {listaFiltrada.map((tarefa, indice) => {
             return (
-              <Tarefa
-                completa={tarefa.completa}
-                onClick={() => this.selectTarefa(tarefa.id)}
-              >
-                {tarefa.texto}
-              </Tarefa>
+              <TarefasItens key={indice}>
+                <Tarefa
+                  completa={tarefa.completa}
+                  onClick={() => this.selectTarefa(tarefa.id)}
+                >
+                  {tarefa.texto}
+                </Tarefa> 
+                <button onClick={() => this.removendoTarefa(tarefa.id)}>X</button>
+              </TarefasItens>
             )
           })}
-
-          {this.state.tarefas.map((item, indice) => {
-          return (
-            <Tarefa
-              key={indice}
-              onClick={() => this.removendoTarefa(item.id)}
-            >
-              {item.texto} 
-            </Tarefa>
-          );
-        })}
         </TarefaList>
-      </div>
+      </ContainerBody>
     )
   }
 }
