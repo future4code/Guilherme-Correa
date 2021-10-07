@@ -28,7 +28,7 @@ const InputsContainer = styled.div`
 const TarefasItens = styled.div`
   display: grid;
   grid-template-columns: 10fr 1fr;
-  gap: 10px;
+  margin-bottom: 10px;
   border: 1px solid black;
 `
 
