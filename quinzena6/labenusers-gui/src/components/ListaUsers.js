@@ -8,7 +8,6 @@ const ContainerLista = styled.div`
     align-items: center;
     justify-content: center;
     width: 310px;
-
 `
 const Lista = styled.div`
     display: flex;

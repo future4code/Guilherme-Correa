@@ -9,10 +9,12 @@ const ContainerCriarUser = styled.div`
     width: 100vw;
     
 `
+
 const Caixa = styled.div`
     display: flex;
     flex-direction: row;
 `
+
 const Campo = styled.div`
     display: flex;
     flex-direction: column;
