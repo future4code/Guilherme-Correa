@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import styled from "styled-components";
 import CriarUser from './components/CriarUser';
-import DetalhesUser from './components/DetalhesUser';
 import ListaUsers from './components/ListaUsers'
 
 const ContainerApp = styled.div`
@@ -20,7 +19,8 @@ class App extends React.Component {
   name: "",
   email: "",
   id: "",
-  pagina: true,  
+  pagina: true,
+  pagina2: true,
   };
 
   criarUsuario = () => {
@@ -68,9 +68,9 @@ class App extends React.Component {
   };
 
   deletarUsuario = (id) => {
-    // let deletar = confirm("Tem certeza de que deseja deletar?")
+    let deletar = window.confirm("Tem certeza de que deseja deletar?")
 
-    // if (deletar) {
+    if (deletar) {
       let filtroDeRemovidos = this.state.usuarios.filter(item => item.id !== id)
 
       axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
@@ -86,28 +86,37 @@ class App extends React.Component {
         alert('Não foi possível deletar!')
         console.log(error.message)
       });
-    // }
+    }
   };
 
   burcarUsuario = (id) => {
+    let filtroDeDetalhes = this.state.usuarios.filter(item => item.id !== id)
+
     axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
       headers: {
         Authorization: "guilherme-correa-banu"
       }
     }
     ).then((response) => {
-      this.setState({usuarios: response.data})
-      console.log(response.data)
+      this.setState({usuarios: filtroDeDetalhes})
+      // this.setState({usuarios: response.data})
       console.log('deu certo')
+      
     })
     .catch((error) => {
       console.log(error.message)
+      console.log('deu ruim')
     });
+    // this.onChangePaginaDois()
   };
 
   componentDidMount = () => {
     this.buscarTodosOsUsuarios()
   };
+
+  // componentDidUpdate = () => {
+  //   this.burcarUsuario()
+  // };
 
   onChangeNome = (e) => {
     this.setState({name: e.target.value})
@@ -119,6 +128,10 @@ class App extends React.Component {
 
   onChangePagina = () => {
     this.setState({pagina: !this.state.pagina})
+  }
+
+  onChangePaginaDois = () => {
+    this.setState({pagina2: !this.state.pagina2})
   }
 
   render () {
@@ -134,13 +147,13 @@ class App extends React.Component {
             onClickCriar={this.criarUsuario}
           />
       } else {
-          return <ListaUsers 
+          return <ListaUsers
+            pagina2={this.state.pagina2}
             usuarios={this.state.usuarios}
-            detalheUsuario={this.burcarUsuario}
+            detalheUsuario={this.onChangePaginaDois}
             onClickDelete={this.deletarUsuario}
           />
       }
-
     };
 
     return (

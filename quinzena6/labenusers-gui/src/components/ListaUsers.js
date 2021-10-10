@@ -1,14 +1,14 @@
 import React from "react";
-import axios from 'axios';
 import styled from "styled-components";
 import DetalhesUser from "./DetalhesUser";
-
 
 const ContainerLista = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 310px;
+
 `
 const Lista = styled.div`
     display: flex;
@@ -18,45 +18,37 @@ const Lista = styled.div`
     border: 1px solid black;
     padding: 5px;
     margin-bottom: 5px;
-    width: 100%;
-
+    width: 80%;
+    span {
+        flex-grow: 1;
+        margin-right: 3px;
+    }
+    button {
+        margin-right: 3px;
+    }
 `
-
-class ListaUsers extends React.Component {
-    render() {
-        return (
-            <ContainerLista>
+function ListaUsers(props) {
+    
+    if (!props.pagina2) {
+        return <DetalhesUser
+          usuarios={props.usuarios}
+          onClickDelete={props.onClickDelete}
+        />
+    } else {
+        return <ContainerLista>
             <h2>Lista de Usuário</h2>
-            {this.props.usuarios.map((item) =>{
+              {props.usuarios.map((item) =>{
                 return <Lista key={item.id}>
-                    <span 
-                        onClick={() => this.props.detalheUsuario(item.id)}>{item.name}</span>
+                    <span>{item.name}</span>
                     <button 
-                        onClick={() => this.props.onClickDelete(item.id)}>Delete</button>
+                        // onClick={() => props.detalheUsuario(item.id)}>Mais</button>
+                        onClick={() => props.detalheUsuario(item.id)}>Mais</button>
+                    <button 
+                        onClick={() => props.onClickDelete(item.id)}>Deletar</button>
                 </Lista>
             })}
-            {/* <button onClick={() => props.onChangePagina()}>Voltar</button> */}
         </ContainerLista>
-        )
     }
 }
 export default ListaUsers;
 
-
-//  function ListaUsers(props) {
-    
-//     return ( 
-//         <ContainerLista>
-//             <h3>Lista de Usuário</h3>
-//             {props.usuarios.map((item) =>{
-//                 return <Lista key={item.id}>
-//                             <span
-//                                 onClick={() => props.onClickDetalhes(item.id)}>{item.name}</span>
-//                             <button 
-//                                 onClick={() => props.onClickDelete(item.id)}>X</button>
-//                         </Lista>
-//             })}
-//             {/* <button onClick={() => props.onChangePagina()}>Voltar</button> */}
-//         </ContainerLista>
-//     )}
-// export default ListaUsers

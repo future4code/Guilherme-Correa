@@ -15,20 +15,27 @@ const Lista = styled.div`
     border: 1px solid black;
     padding: 5px;
     margin-bottom: 5px;
-    width: 100%;
-
+    width: 80%;
+    span {
+        flex-grow: 1;
+        margin-right: 3px;
+    }
+    button {
+        margin-right: 3px;
+    }
 `
  function DetalhesUser(props) {
     
     return ( 
         <ContainerLista>
             <h3>Detalhes do Usuário</h3>
-            {props.usuarios.map((item) =>{
+            {props.usuarios.length === 0 ? null: props.usuarios.map((item) =>{
                 return <Lista key={item.id}>
-                            <span>{item.name}</span>
-                            <span>{item.email}</span>
-                            <button >X</button>
-                        </Lista>
+                    <span>{item.name}</span>
+                    <span>{item.email}</span>
+                    <button 
+                        onClick={() => this.props.onClickDelete(item.id)}>Deletar</button>
+                </Lista>
             })}
         </ContainerLista>
     )}
