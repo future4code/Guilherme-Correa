@@ -14,7 +14,7 @@ const ContainerPlaylist = styled.div`
 function PLaylists(props) {
     return <ContainerPlaylist>
         <h3>Suas Playlists</h3>
-        {props.playlist.map((item) => {
+        {this.props.playlist.map((item) => {
             return <div key={item.playlistId}>
                 <span>{item.name}</span>
                 <button 

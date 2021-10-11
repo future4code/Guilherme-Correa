@@ -4,7 +4,7 @@ import axios from 'axios'
 import CriarPlaylist from './components/CriarPlaylist';
 import styled from 'styled-components';
 import PLaylists from './components/Playlists';
-import Play from './img/play.png'
+import ImgPLay from './img/playbuttonclear.svg';
 
 const ContainerApp = styled.div`
   display: flex;
@@ -18,12 +18,40 @@ const ContainerApp = styled.div`
     margin: 5px;
   }
 `
- const Header = styled.div`
+const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
   background-color: #001e26;
   width: 100vw;
-  color: #00cafd;
+  color: #d4dfe0;
+  padding: 10px;
+  img {
+    width: 50px;
+  }
+  h1 {
+    padding-left: 10px;
+  }
+`
+const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
   align-items: center;
- `
+  justify-content: center;
+
+  background-color: #001e26;
+  width: 100vw;
+  color: #d4dfe0;
+  padding: 10px;
+  font-size: small;
+
+  position: fixed;
+  bottom: 0;
+  width:100%;
+
+`
 class App extends React.Component {
   state = {
     quantidadePlaylist: 0,
@@ -111,27 +139,33 @@ class App extends React.Component {
           createPlaylist={this.createPlaylist}
         />
       } else {
-        return <PLaylists 
-          playlist={this.state.playlist}
-          deletePlaylist={this.deletePlaylist}
+        return <CriarPlaylist 
+          name={this.state.name}
+          onChangeNome={this.onChangeNome}
+          createPlaylist={this.createPlaylist}
         />
+        
+        // <PLaylists 
+        //   playlist={this.state.playlist}
+        //   deletePlaylist={this.deletePlaylist}
+        // />
       }
     };
 
     return (
       <ContainerApp>
         <Header>
+          <img src={ImgPLay} alt='Play'/>
           <h1>LabefyMusic</h1>
-          <img scr={Play} alta='Play'/>
         </Header>
         <main>
           {renderPagina()}
           <button
             onClick={this.onChangePagina}>Playlists</button>
         </main>
-        <footer>
-          rodapé
-        </footer>
+        <Footer>
+          O melhor site de streaming para você criar sua playlist - LabefyMusic © - 2021 
+        </Footer>
         
       </ContainerApp>
     )
