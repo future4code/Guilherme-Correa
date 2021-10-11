@@ -4,6 +4,7 @@ import axios from 'axios'
 import CriarPlaylist from './components/CriarPlaylist';
 import styled from 'styled-components';
 import PLaylists from './components/Playlists';
+import Play from './img/play.png'
 
 const ContainerApp = styled.div`
   display: flex;
@@ -17,6 +18,12 @@ const ContainerApp = styled.div`
     margin: 5px;
   }
 `
+ const Header = styled.div`
+  background-color: #001e26;
+  width: 100vw;
+  color: #00cafd;
+  align-items: center;
+ `
 class App extends React.Component {
   state = {
     quantidadePlaylist: 0,
@@ -94,9 +101,7 @@ class App extends React.Component {
   onChangePagina = () => {
     this.setState({mudarPagina: !this.state.mudarPagina})
   }
-  // onChangePaginaPlay = () => {
-  //   this.setState({paginaPlay: !this.state.paginaPlay})
-  // }
+
   render() {
     const renderPagina = () => {
       if (this.state.mudarPagina) {
@@ -112,24 +117,22 @@ class App extends React.Component {
         />
       }
     };
-    // const renderPLaylist = () => {
-    //   if (this.state.paginaPlay) {
-    //     return renderPagina()
-    //   } else {
-    //     <PLaylists 
-    //       playlist={this.state.playlist}
-    //     />
-    //   }
-    // };
+
     return (
       <ContainerApp>
-        <h1>Labefy - GuiPazini</h1>
-        {renderPagina()}
-        {/* {renderPLaylist()} */}
-        <button
-          onClick={this.onChangePagina}>Playlists</button>
-        {/* <button
-          onClick={this.onChangePaginaPlay}>Playlists</button> */}
+        <Header>
+          <h1>LabefyMusic</h1>
+          <img scr={Play} alta='Play'/>
+        </Header>
+        <main>
+          {renderPagina()}
+          <button
+            onClick={this.onChangePagina}>Playlists</button>
+        </main>
+        <footer>
+          rodapé
+        </footer>
+        
       </ContainerApp>
     )
   }
