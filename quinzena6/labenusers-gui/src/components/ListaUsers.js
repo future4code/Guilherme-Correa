@@ -1,6 +1,6 @@
 import React from "react";
+import axios from 'axios';
 import styled from "styled-components";
-import DetalhesUser from "./DetalhesUser";
 
 const ContainerLista = styled.div`
     display: flex;
@@ -17,37 +17,69 @@ const Lista = styled.div`
     border: 1px solid black;
     padding: 5px;
     margin-bottom: 5px;
-    width: 80%;
-    span {
-        flex-grow: 1;
-        margin-right: 3px;
-    }
-    button {
-        margin-right: 3px;
-    }
+    width: 100%;
 `
-function ListaUsers(props) {
+class ListaUsers extends React.Component {
+    state = {
+        usuarios: [],
+    }
+    componentDidMount = () => {
+        this.buscarTodosOsUsuarios()
+    };
+
+    buscarTodosOsUsuarios = async() => {
+        const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users'
+        try {
+            const response = await axios.get(url, {
+                headers: {
+                    Authorization: "guilherme-correa-banu"
+                }
+            })
+            this.setState({usuarios: response.data})
+        } catch (error) {
+            alert('deu rum!')
+        }
+    };
     
-    if (!props.pagina2) {
-        return <DetalhesUser
-          usuarios={props.usuarios}
-          onClickDelete={props.onClickDelete}
-        />
-    } else {
-        return <ContainerLista>
-            <h2>Lista de Usuário</h2>
-              {props.usuarios.map((item) =>{
-                return <Lista key={item.id}>
-                    <span>{item.name}</span>
-                    <button 
-                        // onClick={() => props.detalheUsuario(item.id)}>Mais</button>
-                        onClick={() => props.detalheUsuario(item.id)}>Mais</button>
-                    <button 
-                        onClick={() => props.onClickDelete(item.id)}>Deletar</button>
+    deletarUsuario = (id) => {
+        let deletar = window.confirm("Tem certeza de que deseja deletar?")
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
+        if (deletar) {
+        let filtroDeRemovidos = this.state.usuarios.filter(item => item.id !== id)
+
+        axios.delete(url, {
+            headers: {
+                Authorization: "guilherme-correa-banu"
+            }
+        })
+        .then(() => {
+            alert('Deletado com Sucesso!')
+            this.setState({usuarios: filtroDeRemovidos})
+        })
+        .catch((error) => {
+            alert('Não foi possível deletar!')
+            console.log(error.response.data)
+        });
+        }
+    };
+
+    render() {
+        const listaUsers = this.state.usuarios.map((user) => {
+            return (
+                <Lista key={user.id}>
+                    {user.name}
+                    <button onClick={() => this.deletarUsuario(user.id)}>Deletar</button>
                 </Lista>
-            })}
-        </ContainerLista>
+                
+            )
+        })
+        return (
+            <ContainerLista>
+                    <h2>Lista de Usuário</h2>
+                    {listaUsers}
+                    <button onClick={this.props.goToCadastro}>Ir para tela de cadastro</button>
+            </ContainerLista>
+        )
     }
 }
 export default ListaUsers;
-
