@@ -47,25 +47,19 @@ const Item = styled.div`
     img:active {
         filter: invert(85%);
     }
-
 `
-
-
-
 class PLaylists extends React.Component {
     state = {
         playlist: [],
-    }
-
+    };
     componentDidMount = () => {
         this.getAllPlaylists()
-    }
+    };
 
     getAllPlaylists = async() => {
-        const src = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
-
+        const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
         try {
-            const response = await axios.get(src, {
+            const response = await axios.get(url, {
                 headers: {
                     "Authorization": 'guilherme-correa-banu'
                 }
@@ -78,35 +72,31 @@ class PLaylists extends React.Component {
             console.log(error.response)
             console.log('deu rum!')
         }
-    }
+    };
 
     deletePlaylist = (playlistId) => {
-        let delPlaylist = window.confirm("Tem certeza de que deseja deletar?")
-        const src = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}`
-
-        if (delPlaylist) {
-        axios.delete(src, {
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}`
+        axios.delete(url, {
             headers: {
               Authorization: "guilherme-correa-banu"
             }
-          })
-          .then((response) => {
-            this.setState({usuarios: response.data})
+        })
+        .then((response) => {
+            this.setState({playlist: response.data})
             alert('Playlist deletada com Sucesso!')
-            console.log('response', response)
-          })
-          .catch((error) => {
+            console.log('response', response.data)
+        })
+        .catch((error) => {
             alert('Não foi possível deletar a Playlist!')
-            console.log(error.response)
-          });
-        }
+            console.log(error.response.data)
+        });
     };
 
     render(){
         return (
             <ContainerPlaylist>
                 <Titulo>
-                    <img src={SuaPlaylist} /><h2>Suas Playlists</h2>
+                    <img alt='SuaPlaylist' src={SuaPlaylist} /><h2>Suas Playlists</h2>
                 </Titulo>
                 
                 {this.state.playlist.map((item) => {
@@ -117,14 +107,12 @@ class PLaylists extends React.Component {
                         <img 
                             alt="Detalhes"
                             src={ReadMore}
-                            onClick={() => this.deletePlaylist(item.playlistId)}
                         />
                         <img 
                             alt="Excluir"
                             src={Delete}
                             onClick={() => this.deletePlaylist(item.playlistId)}
                         />
-                        
                     </Item>
                 })}
             </ContainerPlaylist>

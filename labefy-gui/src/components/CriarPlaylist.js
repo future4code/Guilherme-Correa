@@ -22,48 +22,46 @@ const Titulo = styled.div`
   }
 `
 const CriarNovaPlay = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    margin: 5px;
-    padding: 7px 15px 7px 15px;
-    border: 1px solid gray;
-    border-radius: 25px;
+  margin: 5px;
+  padding: 7px 15px 7px 15px;
+  border: 1px solid gray;
+  border-radius: 25px;
+  background-color: #006261;
+
+  text-decoration: none;
+  input {
+    border: none;
     background-color: #006261;
-
     text-decoration: none;
-    input {
-      border: none;
-      background-color: #006261;
-      text-decoration: none;
-      box-sizing: border-box;
-      outline: 0;
-      box-shadow: 0;
-      color: #fff;
-      width: 100%;
-
-    }
-    input::placeholder {
-      color: #fff;
-    }
-    img {
-        height: 30px;
-        margin-left: 10px;
-    }
-    button {
-        margin-left: 10px;
-    }
-    img:hover {
-        filter: invert(85%); 
-    }
-    img:active {
-        filter: invert(85%);
-    }
+    box-sizing: border-box;
+    outline: 0;
+    box-shadow: 0;
+    color: #fff;
+    width: 100%;
+  }
+  input::placeholder {
+    color: #fff;
+  }
+  img {
+    height: 30px;
+    margin-left: 10px;
+  }
+  button {
+    margin-left: 10px;
+  }
+  img:hover {
+    filter: invert(85%); 
+  }
+  img:active {
+    filter: invert(85%);
+  }
 
 `
-
 
 class CriarPlaylist extends React.Component {
   state = {
@@ -71,12 +69,12 @@ class CriarPlaylist extends React.Component {
   }
 
   createPlaylist = async() => {
-    const src = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
+    const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
     const body = {
       name: this.state.name
     }
     try {
-      const response = await axios.post(src, body, {
+      const response = await axios.post(url, body, {
         headers: {
           "Authorization": 'guilherme-correa-banu'
         }
@@ -98,7 +96,7 @@ class CriarPlaylist extends React.Component {
     return (
       <ContainerPlaylist>
         <Titulo>
-          <img src={PlaylistAdd} /><h2>Criar uma playlists</h2>
+          <img src={PlaylistAdd} alt='Criar Playlist'/><h2>Criar uma playlists</h2>
         </Titulo>
         <CriarNovaPlay>
           <input

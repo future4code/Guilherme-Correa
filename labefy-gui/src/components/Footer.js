@@ -32,9 +32,9 @@ class Footer extends React.Component {
             <ContainerFooter>
                 <span>O melhor site de streaming para você criar sua playlist - LabefyMusic © - 2021</span>
                 <div>
-                    <img src={Facebook} />
-                    <img src={Instagram} />
-                    <img src={Twitter} />
+                    <img alt='Facebook' src={Facebook} />
+                    <img alt='Instagram' src={Instagram} />
+                    <img alt='Twitter' src={Twitter} />
                 </div>
             </ContainerFooter>
         )

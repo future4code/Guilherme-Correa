@@ -100,19 +100,19 @@ class Main extends React.Component {
             <ContainerMain>
                 <ContainerLateral>
                     <div onClick={this.onChangeHome}>
-                        <img src={HomePic} /><span>Ínicio</span>
+                        <img alt='Home' src={HomePic} /><span>Ínicio</span>
                     </div>
                     <div onClick={this.onChangePlaylist}>
-                        <img src={PLaylistsPlay} /><span>Suas Playlists</span>
+                        <img alt='Playlist' src={PLaylistsPlay} /><span>Suas Playlists</span>
                     </div>
                     <div onClick={this.onChangeCriaPLay}>
-                        <img src={PlaylistAdd} /><span>Criar Playlist</span>
+                        <img alt='AddPlaylist' src={PlaylistAdd} /><span>Criar Playlist</span>
                     </div>
                     <div onClick={this.onChangeSuasMusicas}>
-                        <img src={MusicPic} /><span>Suas Músicas</span>
+                        <img alt='Music' src={MusicPic} /><span>Suas Músicas</span>
                     </div>
                     <div onClick={this.onChangeAddMusic}>
-                        <img src={AddMusicPic} /><span>Adicionar Músicas</span>
+                        <img alt='AddMusic' src={AddMusicPic} /><span>Adicionar Músicas</span>
                     </div>
                 </ContainerLateral>
                 <ContainerMeio>

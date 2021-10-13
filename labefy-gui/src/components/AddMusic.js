@@ -109,7 +109,7 @@ class AddMusic extends React.Component {
         return (
             <ContainerAddMusic>
                 <Titulo>
-                    <img src={AddNewMusic} /><h2>Adicionar música na playlist</h2>
+                    <img src={AddNewMusic} alt='Adicionar Musica'/><h2>Adicionar música na playlist</h2>
                 </Titulo>
                 <Formulario>
                     <span>Nome da Playlist:</span>

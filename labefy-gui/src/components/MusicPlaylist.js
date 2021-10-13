@@ -3,8 +3,6 @@ import axios from 'axios'
 import styled from 'styled-components';
 
 import SuaPlaylist from '../img/queue_music_black.svg'
-import Delete from '../img/clear_white.svg'
-import ReadMore from '../img/read_more_white.svg'
 
 const ContainerMusicas = styled.div`
     display: flex;
@@ -67,7 +65,7 @@ class MusicPlaylist extends React.Component {
         return (
             <ContainerMusicas>
                 <Titulo>
-                    <img src={SuaPlaylist} /><h2>Suas Músicas</h2>
+                    <img alt='SuasMusicas' src={SuaPlaylist} /><h2>Suas Músicas</h2>
                 </Titulo>
                 <HeaderMusic>
                     <span>#</span>
