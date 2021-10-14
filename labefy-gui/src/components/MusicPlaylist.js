@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
 
-import SuaPlaylist from '../img/queue_music_black.svg'
+import MusicPic from '../img/play_circle_filled_black.svg';
+import CardMusic from './CardMusic';
+import PlaylistAdd from '../img/playlist_add_black.svg';
 
 const ContainerMusicas = styled.div`
     display: flex;
@@ -17,36 +19,36 @@ const Titulo = styled.div`
     margin-bottom: 10px;
     h2 {
         padding-left: 10px;
+        flex-grow: 1;
     }
-`
-const HeaderMusic = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 5fr 5fr 2fr ;
-    column-gap: 5px;
-    border-bottom: 1px solid #b2b2b2;
-    color: #b2b2b2;
-    padding: 5px;
+    #AddMusic:hover {
+        filter: invert(45%); 
+    }
+    #AddMusic:active {
+        filter: invert(45%);
+    }
 
 `
-const ListMusic = styled.div`
+const ContainerLegendaMusic = styled.div`
     display: grid;
-    grid-template-columns: 1fr 5fr 5fr 2fr ;
+    grid-template-columns: 1fr 5fr 5fr 5fr 1fr ;
     column-gap: 5px;
+    align-items: center;
     border-bottom: 1px solid #b2b2b2;
     color: #848484;
     padding: 5px;
-
 `
-
-
 class MusicPlaylist extends React.Component {
     state = {
         tracks: []
     }
+    componentDidMount = () => {
+        this.getPlaylistTracks(this.props.playlistId)
+    }
 
     getPlaylistTracks = async(playlistId) => {
+        console.log(playlistId)
         const src = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`
-        
         try {
             const response = await axios.get(src, {
                 headers: {
@@ -54,37 +56,41 @@ class MusicPlaylist extends React.Component {
                 }
             })
             this.setState({tracks: response.data.result.tracks})
-            console.log('resposta axios musicplalist', response.data)
-            console.log('deu certo!')
         } catch (error) {
-            console.log(error.response)
-            console.log('deu rum!')
+            console.log(error.response.data.result)
         }
     }
+
+    
     render(){
+        const tracks = this.state.tracks.map((track, index) => {
+            return <CardMusic 
+                key={track.id}
+                name={track.name}
+                artist={track.artist}
+                url={track.url}
+                counter={index +1}
+            />
+        })
         return (
             <ContainerMusicas>
                 <Titulo>
-                    <img alt='SuasMusicas' src={SuaPlaylist} /><h2>Suas Músicas</h2>
+                    <img alt='SuasMusicas' src={MusicPic} />
+                    <h2>Suas Músicas</h2>
+                    <img 
+                        onClick={this.props.onChangeMusic}
+                        id='AddMusic' alt='AddMusic' src={PlaylistAdd} 
+                    />
+
                 </Titulo>
-                <HeaderMusic>
-                    <span>#</span>
-                    <span>Nome</span>
-                    <span>Artista | Banda</span>
-                    <span>Url</span>
-                </HeaderMusic>
-                <ListMusic>
-                    <span>1</span>
-                    <span>Paradise</span>
-                    <span>Coldplay</span>
-                    <span>Url</span>
-
-                    <span>2</span>
-                    <span>Paradise</span>
-                    <span>Coldplay</span>
-                    <span>Url</span>
-                </ListMusic>
-
+                <ContainerLegendaMusic>
+                    <span>ID</span>
+                    <span>NOME</span>
+                    <span>ARTISTA / BANDA</span>
+                    <span>PLAY</span>
+                    <span> </span>
+                </ContainerLegendaMusic>
+                {tracks}
             </ContainerMusicas>
         )
     }

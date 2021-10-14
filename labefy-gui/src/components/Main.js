@@ -2,31 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Home from './Home';
+import PlaylistManager from './PlaylistManager';
+
 import CriarPlaylist from './CriarPlaylist';
-import PLaylists from './Playlists';
-import AddMusic from './AddMusic';
-import MusicPlaylist from './MusicPlaylist'
 
 import HomePic from '../img/home_black.svg'
-import PLaylistsPlay from '../img/playlist_play_black.svg';
+import PlaylistManagerPic from '../img/playlist_play_black.svg';
 import PlaylistAdd from '../img/playlist_add_black.svg';
-import MusicPic from '../img/play_circle_filled_black.svg';
-import AddMusicPic from '../img/add_circle_black.svg';
+
 
 
 const ContainerMain = styled.div`
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 100vw;
-    background-color: #d2d2d2;
+    height: 100%;
 `
 const ContainerLateral = styled.div`
     display: flex;
     flex-direction: column;
-    width: 200px;
-    margin: 10px;
+    min-width: 135px;
+    margin: 10px 0 5px 15px;
+    padding: 5px;
     border-right: 1px solid gray;
+    
     div {
         display: flex;
         flex-direction: row;
@@ -48,9 +47,9 @@ const ContainerLateral = styled.div`
 `
 const ContainerMeio = styled.div`
     margin: 10px;
-    flex-grow: 1;
+    width: 100vw;
+    
 `
-
 class Main extends React.Component {
     state = {
         telaAtual: 'Home',
@@ -59,40 +58,23 @@ class Main extends React.Component {
         switch (this.state.telaAtual) {
             case 'Home':
                 return <Home />
-            case  'Playlist':
-                return <PLaylists
-                    onChangeCriaPLay={this.onChangeCriaPLay}
-                    onChangeAddMusic={this.onChangeAddMusic}
-                />
+            case  'PlaylistManager':
+                return <PlaylistManager />
+
             case 'CriaPlay':
-                return <CriarPlaylist 
-                    onChangePlaylist={this.onChangePlaylist}
-                    onChangeAddMusic={this.onChangeAddMusic}
-                />
-            case 'SuasMusicas':
-                return <MusicPlaylist />
-            case  'AddMusic':
-                return <AddMusic />
+                return <CriarPlaylist />
             default:
-                return <MusicPlaylist
-                    onChangePlaylist={this.onChangePlaylist}
-                />
+                return <Home />
         }
     }
     onChangeHome = () => {
         this.setState({telaAtual: 'Home'})
     }
+    onChangePlaylistManager = () => {
+        this.setState({telaAtual: 'PlaylistManager'})
+    }
     onChangeCriaPLay = () => {
         this.setState({telaAtual: 'CriaPlay'})
-    }
-    onChangePlaylist = () => {
-        this.setState({telaAtual: 'Playlist'})
-    }
-    onChangeAddMusic = () => {
-        this.setState({telaAtual: 'AddMusic'})
-    }
-    onChangeSuasMusicas = () => {
-        this.setState({telaAtual: 'SuasMusicas'})
     }
 
     render(){
@@ -102,21 +84,16 @@ class Main extends React.Component {
                     <div onClick={this.onChangeHome}>
                         <img alt='Home' src={HomePic} /><span>Ínicio</span>
                     </div>
-                    <div onClick={this.onChangePlaylist}>
-                        <img alt='Playlist' src={PLaylistsPlay} /><span>Suas Playlists</span>
+                    <div onClick={this.onChangePlaylistManager}>
+                        <img alt='PlaylistManager' src={PlaylistManagerPic} /><span>Playlists</span>
                     </div>
+
                     <div onClick={this.onChangeCriaPLay}>
                         <img alt='AddPlaylist' src={PlaylistAdd} /><span>Criar Playlist</span>
                     </div>
-                    <div onClick={this.onChangeSuasMusicas}>
-                        <img alt='Music' src={MusicPic} /><span>Suas Músicas</span>
-                    </div>
-                    <div onClick={this.onChangeAddMusic}>
-                        <img alt='AddMusic' src={AddMusicPic} /><span>Adicionar Músicas</span>
-                    </div>
                 </ContainerLateral>
                 <ContainerMeio>
-                    <div>{this.onChangePagina()}</div>
+                    {this.onChangePagina()}
                 </ContainerMeio>
             </ContainerMain>
         )

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import AddNewMusic from '../img/play_circle_outline_black.svg';
 import AddMusicPic from '../img/add_circle_black.svg';
+import VoltarPic from '../img/arrow_back_ios_black.svg'
 
 const ContainerAddMusic = styled.div`
     display: flex;
@@ -24,7 +25,6 @@ const Formulario = styled.div`
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-items: center;
-    /* border: 1px solid gray; */
     padding: 5px;
     span {
 
@@ -66,28 +66,28 @@ class AddMusic extends React.Component {
         name: '',
         artist: '',
         url: '',
-        plalistName: '',
     }
 
     addTrackToPlaylist = async(playlistId) => {
-        const src = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`
+        console.log(playlistId)
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`
         const body = {
             name: this.state.name, 
             artist: this.state.artist,
             url: this.state.url
         }
         try {
-            const response = await axios.post(src, body, {
+            const response = await axios.post(url, body, {
                 headers: {
                     "Authorization": 'guilherme-correa-banu'
                 }
             })
-            this.setState({playlist: response.data.result.list})
-            console.log('resposta axios', response.data)
+            console.log('resposta axios', response.data.message)
             console.log('deu certo!')
+            this.props.onChangeMusic()
             
         } catch (error) {
-            console.log(error.response)
+            console.log(error.response.data)
             console.log('deu rum!')
         }
     }
@@ -101,26 +101,17 @@ class AddMusic extends React.Component {
     onChangeUrl = (e) => {
         this.setState({url: e.target.value})
     }
-    onChangePlalistName = (e) => {
-        this.setState({plalistName: e.target.value})
-    }
+    
 
     render(){
         return (
             <ContainerAddMusic>
                 <Titulo>
-                    <img src={AddNewMusic} alt='Adicionar Musica'/><h2>Adicionar música na playlist</h2>
+                    <img src={AddNewMusic} alt='Adicionar Musica'/>
+                    <h2>Adicionar música na playlist</h2>
+
                 </Titulo>
                 <Formulario>
-                    <span>Nome da Playlist:</span>
-                    <input
-                        type="text" name="plalistName" id="plalistName" 
-                        placeholder='...'
-                        size="20"
-                        value={this.state.plalistName}
-                        onChange={this.onChangePlalistName}
-                    />
-                    
                     <span>Artista ou Banda:</span>
                     <input
                         type="text" name="artist" id="artist" 
@@ -150,6 +141,7 @@ class AddMusic extends React.Component {
                     <img 
                         alt='Adicionar Playlist'
                         src={AddMusicPic}
+                        onClick={() => this.addTrackToPlaylist(this.props.playlistId)}
                     />
                 </ BotaoEnviar>
             </ContainerAddMusic>

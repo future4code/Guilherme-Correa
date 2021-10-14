@@ -3,8 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components';
 
 import SuaPlaylist from '../img/queue_music_black.svg'
-import Delete from '../img/clear_white.svg'
-import ReadMore from '../img/read_more_white.svg'
+import CardPlaylist from './CardPlaylist';
 
 const ContainerPlaylist = styled.div`
     display: flex;
@@ -21,41 +20,13 @@ const Titulo = styled.div`
         padding-left: 10px;
     }
 `
-const Item = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    margin: 5px;
-    padding: 7px 15px 7px 15px;
-
-    border: 1px solid gray;
-    border-radius: 25px;
-    background-color: #006261;
-    color: #fff;
-    span {
-        flex-grow: 1;
-    }
-    img {
-        height: 30px;
-        margin-left: 10px;
-    }
-    img:hover {
-        filter: invert(85%); 
-    }
-    img:active {
-        filter: invert(85%);
-    }
-`
 class PLaylists extends React.Component {
     state = {
-        playlist: [],
+        playlists: [],
     };
     componentDidMount = () => {
         this.getAllPlaylists()
     };
-
     getAllPlaylists = async() => {
         const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
         try {
@@ -64,13 +35,9 @@ class PLaylists extends React.Component {
                     "Authorization": 'guilherme-correa-banu'
                 }
             })
-            this.setState({playlist: response.data.result.list})
-            console.log('resposta axios', response.data)
-            console.log('deu certo!')
-            
+            this.setState({playlists: response.data.result.list})  
         } catch (error) {
             console.log(error.response)
-            console.log('deu rum!')
         }
     };
 
@@ -82,39 +49,29 @@ class PLaylists extends React.Component {
             }
         })
         .then((response) => {
-            this.setState({playlist: response.data})
+            this.getAllPlaylists()
             alert('Playlist deletada com Sucesso!')
-            console.log('response', response.data)
         })
         .catch((error) => {
-            alert('Não foi possível deletar a Playlist!')
             console.log(error.response.data)
         });
-    };
-
+    }; 
     render(){
+        const playlists = this.state.playlists.map(playlist => {
+            return <CardPlaylist 
+                key={playlist.id}
+                name={playlist.name}
+                playlistId={playlist.id}
+                deletePlaylist={this.deletePlaylist}
+                listaMusicas={this.props.listaMusicas}
+            />
+        })
         return (
             <ContainerPlaylist>
                 <Titulo>
                     <img alt='SuaPlaylist' src={SuaPlaylist} /><h2>Suas Playlists</h2>
                 </Titulo>
-                
-                {this.state.playlist.map((item) => {
-                    return <Item key={item.playlistId}>
-                        <span>
-                            {item.name}
-                        </span>
-                        <img 
-                            alt="Detalhes"
-                            src={ReadMore}
-                        />
-                        <img 
-                            alt="Excluir"
-                            src={Delete}
-                            onClick={() => this.deletePlaylist(item.playlistId)}
-                        />
-                    </Item>
-                })}
+                    {playlists}
             </ContainerPlaylist>
         )
     }

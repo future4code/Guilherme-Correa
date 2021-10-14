@@ -7,7 +7,7 @@ const ContainerHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
+  top: 0;
   background-color: #001e26;
   width: 100vw;
   color: #d4dfe0;
