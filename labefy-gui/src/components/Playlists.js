@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
-
 import SuaPlaylist from '../img/queue_music_black.svg'
 import CardPlaylist from './CardPlaylist';
 
@@ -20,7 +19,7 @@ const Titulo = styled.div`
         padding-left: 10px;
     }
 `
-class PLaylists extends React.Component {
+class Playlists extends React.Component {
     state = {
         playlists: [],
     };
@@ -76,4 +75,4 @@ class PLaylists extends React.Component {
         )
     }
 }
-export default PLaylists
+export default Playlists

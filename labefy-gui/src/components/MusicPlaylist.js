@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
-
 import MusicPic from '../img/play_circle_filled_black.svg';
 import CardMusic from './CardMusic';
 import PlaylistAdd from '../img/playlist_add_black.svg';
@@ -40,7 +39,7 @@ const ContainerLegendaMusic = styled.div`
 `
 class MusicPlaylist extends React.Component {
     state = {
-        tracks: []
+        tracks: [],
     }
     componentDidMount = () => {
         this.getPlaylistTracks(this.props.playlistId)
@@ -61,7 +60,24 @@ class MusicPlaylist extends React.Component {
         }
     }
 
-    
+    removeTrackFromPlaylist = (playlistId, trackId) => {
+        console.log('id playlist', playlistId)
+        console.log('id music', trackId)
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks/${trackId}`
+        axios.delete(url, {
+            headers: {
+              Authorization: "guilherme-correa-banu"
+            }
+        })
+        .then((response) => {
+            console.log(response.data)
+            this.getPlaylistTracks()
+            alert('Music deletada com Sucesso!')
+        })
+        .catch((error) => {
+            console.log(error.response.data)
+        });
+    }
     render(){
         const tracks = this.state.tracks.map((track, index) => {
             return <CardMusic 
@@ -69,6 +85,8 @@ class MusicPlaylist extends React.Component {
                 name={track.name}
                 artist={track.artist}
                 url={track.url}
+                removeTrackFromPlaylist={this.removeTrackFromPlaylist}
+                trackId={track.id}
                 counter={index +1}
             />
         })

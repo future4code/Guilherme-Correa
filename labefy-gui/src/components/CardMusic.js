@@ -31,7 +31,8 @@ class CardMusic extends React.Component {
                 <audio controls='controls'>
                     <source src={this.props.url} type="audio/ogg" />
                 </audio>
-                <img src={Delete} alt='Deletar' />
+                <img src={Delete} alt='Deletar'
+                    onClick={() => this.props.removeTrackFromPlaylist(this.props.trackId)} />
             </HeaderMusic>
         )
     }

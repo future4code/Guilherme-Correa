@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Delete from '../img/clear_white.svg'
 import ReadMore from '../img/read_more_white.svg'
 

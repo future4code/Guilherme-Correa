@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import AddNewMusic from '../img/play_circle_outline_black.svg';
 import AddMusicPic from '../img/add_circle_black.svg';
-import VoltarPic from '../img/arrow_back_ios_black.svg'
+// import VoltarPic from '../img/arrow_back_ios_black.svg'
 
 const ContainerAddMusic = styled.div`
     display: flex;

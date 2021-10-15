@@ -24,10 +24,13 @@ class PlaylistManager extends React.Component {
         telaAtual: false,
         playlistId: '',
         AddTracks: false,
+        trackId: '',
     }
+
     onChangePagina = (playlistId) => {
         this.setState({telaAtual: !this.state.telaAtual})
         this.setState({playlistId: playlistId})
+
     }
     renderizarDetalhes = () => {
         if (this.state.telaAtual) {
@@ -40,6 +43,8 @@ class PlaylistManager extends React.Component {
                 return <MusicPlaylist 
                     playlistId={this.state.playlistId}
                     onChangeMusic={this.onChangeMusic}
+                    trackId={this.state.trackId}
+
                 />
     
             } 
