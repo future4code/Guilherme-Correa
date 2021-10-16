@@ -32,7 +32,7 @@ class CardMusic extends React.Component {
                     <source src={this.props.url} type="audio/ogg" />
                 </audio>
                 <img src={Delete} alt='Deletar'
-                    onClick={() => this.props.removeTrackFromPlaylist(this.props.trackId)} />
+                    onClick={this.props.removeTrackFromPlaylist} />
             </HeaderMusic>
         )
     }

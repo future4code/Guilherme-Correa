@@ -8,12 +8,22 @@ const ContainerPlaylistManager = styled.div`
     display: flex;
     flex-direction: row;
     align-items: stretch;
+
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
 `
 const SuasPlalistsContainer = styled.div`
     padding-right: 10px;
     border-right: 1px solid gray;
     min-width: 270px;
     flex-grow: 0;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        border: none;
+    }
+
 `
 const DetailContainer = styled.div`
     margin-left: 10px;

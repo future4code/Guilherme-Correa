@@ -7,6 +7,7 @@ const ContainerHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  position: fixed;
   top: 0;
   background-color: #001e26;
   width: 100vw;
@@ -17,6 +18,10 @@ const ContainerHeader = styled.div`
   }
   h1 {
     padding-left: 10px;
+  }
+
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    width 100vw;
   }
 `
 class Header extends React.Component {
