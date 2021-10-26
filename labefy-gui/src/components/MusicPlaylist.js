@@ -9,6 +9,7 @@ const ContainerMusicas = styled.div`
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 20px;
 `
 const Titulo = styled.div`
     display: flex;
@@ -71,7 +72,7 @@ class MusicPlaylist extends React.Component {
         })
         .then((response) => {
             console.log(response.data)
-            this.getPlaylistTracks()
+            this.getPlaylistTracks(playlistId)
             alert('Music deletada com Sucesso!')
         })
         .catch((error) => {
@@ -85,7 +86,7 @@ class MusicPlaylist extends React.Component {
                 name={track.name}
                 artist={track.artist}
                 url={track.url}
-                removeTrackFromPlaylist={this.removeTrackFromPlaylist}
+                removeTrackFromPlaylist = {() => this.removeTrackFromPlaylist(this.props.playlistId, track.id)}
                 trackId={track.id}
                 counter={index +1}
             />

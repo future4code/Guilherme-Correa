@@ -1,22 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Home from './Home';
 import PlaylistManager from './PlaylistManager';
-
 import CriarPlaylist from './CriarPlaylist';
-
 import HomePic from '../img/home_black.svg'
 import PlaylistManagerPic from '../img/playlist_play_black.svg';
 import PlaylistAdd from '../img/playlist_add_black.svg';
-
-
 
 const ContainerMain = styled.div`
     display: flex;
     flex-direction: row;
     width: 100vw;
     height: 100%;
+    margin-top: 65px;
+
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+        width: 100vw;
+    }
 `
 const ContainerLateral = styled.div`
     display: flex;
@@ -44,11 +49,26 @@ const ContainerLateral = styled.div`
             filter: invert(25%);
         }
     }
+
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        margin: 5px;
+        padding: 5px;
+        width: 100vw;
+        border-right: none;
+        border-bottom: 1px solid gray;
+    }
 `
 const ContainerMeio = styled.div`
     margin: 10px;
     width: 100vw;
     
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin: 5px;
+        width: 100vw;
+    }
 `
 class Main extends React.Component {
     state = {

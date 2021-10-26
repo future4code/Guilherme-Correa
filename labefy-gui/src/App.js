@@ -10,6 +10,12 @@ const ContainerApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 class App extends React.Component {
 

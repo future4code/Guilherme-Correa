@@ -4,12 +4,13 @@ import styled from 'styled-components';
 
 import AddNewMusic from '../img/play_circle_outline_black.svg';
 import AddMusicPic from '../img/add_circle_black.svg';
-// import VoltarPic from '../img/arrow_back_ios_black.svg'
+import VoltarPic from '../img/arrow_back_ios_black.svg'
 
 const ContainerAddMusic = styled.div`
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 20px;
 `
 const Titulo = styled.div`
     display: flex;
@@ -19,6 +20,13 @@ const Titulo = styled.div`
     margin-bottom: 10px;
     h2 {
         padding-left: 10px;
+        flex-grow: 1;
+    }
+    #VoltarPic:hover {
+        filter: invert(45%); 
+    }
+    #VoltarPic:active {
+        filter: invert(45%);
     }
 `
 const Formulario = styled.div`
@@ -60,7 +68,6 @@ const BotaoEnviar = styled.div`
         filter: invert(25%);
     }
 `
-
 class AddMusic extends React.Component {
     state = {
         name: '',
@@ -109,6 +116,8 @@ class AddMusic extends React.Component {
                 <Titulo>
                     <img src={AddNewMusic} alt='Adicionar Musica'/>
                     <h2>Adicionar música na playlist</h2>
+                    <img src={VoltarPic} alta='VoltarPic' id='VoltarPic'
+                        onClick={this.props.onChangeMusic}/>
 
                 </Titulo>
                 <Formulario>
