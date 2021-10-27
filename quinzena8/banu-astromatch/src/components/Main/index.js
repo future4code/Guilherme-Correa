@@ -1,20 +1,18 @@
-import {ContanierMain, ContainerPrincipal} from './styled.js'
+import {ContanierMain, ContainerPrincipal} from './style.js'
 import { useState } from "react";
-
-import Footer from "../Footer";
 import Header from '../Header';
 import Home from '../Home/'
 import Profile from '../Profile/'
 import Matchs from '../Matchs/'
 
-
-function Main(props) {
-    const [homePage, setHomePage] = useState('')
+function Main() {
+    const [homePage, setHomePage] = useState('inicio')
 
     const renderPage = () => {
         switch(homePage) {
             case 'inicio':
-                return <Home />
+                return <Home 
+                    onChangePage={onChangePage}/>
             case 'profile':
                 return <Profile />
             case 'matchs':
@@ -25,7 +23,6 @@ function Main(props) {
     const onChangePage = (homePage) => {
         setHomePage(homePage)
     }
-
     return (
         <ContanierMain>
             <Header 
@@ -34,7 +31,6 @@ function Main(props) {
             <ContainerPrincipal>
                 {renderPage()}
             </ContainerPrincipal>
-            <Footer />
         </ContanierMain>
     )
 }
