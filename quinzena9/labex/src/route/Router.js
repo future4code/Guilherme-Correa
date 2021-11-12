@@ -2,25 +2,25 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import {Home} from '../pages/HomePage';
-import {TravelPage} from '../pages/TravelPage';
-import { AdmPage } from "../pages/AdmPage";
+import { HomePage } from '../pages/HomePage';
+import { ListTripPage } from '../pages/ListTripPage';
+import { LoginPage } from "../pages/LoginPage";
 import { TripsPage } from "../pages/TripsPage";
-import { TripFormPage } from "../pages/TripFormPage";
-import { AdmHomePage } from "../pages/AdmHomePage";
-import { CriarViagemPage } from "../pages/CriarViagemPage";
+import { ApplicationFormPage } from "../pages/ApplicationFormPage";
+import { AdminHomePage } from '../pages/AdminHomePage'
+import { CreateTripPage } from "../pages/CreateTripPage";
 
 export const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={"/"} exact element={<Home/>} />
-                <Route path={"/travelpage"} exact element={<TravelPage />} />
-                <Route path={"/admpage"} exact element={<AdmPage/>} />
-                <Route path={"/tripformpage"} exact element={<TripFormPage/>} />
-                <Route path={"/tripspage"} exact element={<TripsPage/>} />
-                <Route path={"/admhomepage"} exact element={<AdmHomePage/>} />
-                <Route path={"/criarviagempage"} exact element={<CriarViagemPage/>} /> 
+                <Route path={"/"} exact element={<HomePage/>} />
+                <Route path={"/trips/list"} exact element={<ListTripPage />} />
+                <Route path={"/trips/application"} exact element={<ApplicationFormPage/>} />
+                <Route path={"/login"} exact element={<LoginPage/>} />
+                <Route path={"/admin/trips/:id"} exact element={<TripsPage/>} />
+                <Route path={"/admin/trips/list"} exact element={<AdminHomePage/>} />
+                <Route path={"/admin/trips/create"} exact element={<CreateTripPage/>} /> 
             </Routes>
         </BrowserRouter>
     )

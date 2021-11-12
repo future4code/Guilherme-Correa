@@ -1,21 +1,37 @@
-import styled from "styled-components";
+import {ContainerCardAdmTrip} from './style'
+// import { useEffect } from 'react'
+// import { getTripDetail } from '../services'
+import IconDelete from '../img/delete_outline_black_48dp.svg'
 
-const ContainerCardAdmTrip = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #fff;
-`
+export const CardAdmTrip = () => {
+    
+    // useEffect(() => {
+    //     const fetch = async () => {
+    //         const token = localStorage.getItem("token");
+    //         const response = await getTripDetail(token, 'NoIFVcOiSgTKTIPVZwXS');
+    //         console.log(response);
+    //     }
+    //     fetch();
+    // }, []);
 
-function CardAdmTrip(props) {
     return(
-        <ContainerCardAdmTrip>
-            <span>Nome da viagem</span>
-            <button>Excluir</button>
-        </ContainerCardAdmTrip>
+        <div>
+            <ContainerCardAdmTrip>
+                <span>Nome da viagem</span>
+                <img src={IconDelete} alt='Delete' />
+            </ContainerCardAdmTrip>
+            <ContainerCardAdmTrip>
+                <span>Nome da viagem</span>
+                <img src={IconDelete} alt='Delete' />
+            </ContainerCardAdmTrip>
+            <ContainerCardAdmTrip>
+                <span>Nome da viagem</span>
+                <img src={IconDelete} alt='Delete' />
+            </ContainerCardAdmTrip>
+            <ContainerCardAdmTrip>
+                <span>Nome da viagem</span>
+                <img src={IconDelete} alt='Delete' />
+            </ContainerCardAdmTrip>
+        </div>
     )
 }
-export default CardAdmTrip;
