@@ -3,14 +3,19 @@ import { useHistory } from 'react-router'
 import { useForm } from '../../hooks/useForm'
 import axios from 'axios'
 import {BASE_URL_API} from '../../constants/URL_API'
+import { useEffect } from 'react'
+import {ButtonGoBack} from '../../components/ButtonGoBack'
 
 export const LoginPage = () => {
     const {form, onChange, cleanFields} = useForm({email: "", password: ""})
     const history = useHistory()
 
-    const goBack = () => {
-        history.goBack()
-    }
+    useEffect(() => {
+        const token = window.localStorage.getItem('token')
+        if(token != null) {
+            history.push('/admin/trips/list')
+        }
+    }, [])
 
     const fazerLogin = async (ev) => {
         ev.preventDefault();
@@ -25,13 +30,18 @@ export const LoginPage = () => {
             window.localStorage.setItem('token', response.data.token)
             history.push('/admin/trips/list')
         })
+        .catch((error) => {
+            alert(error.response.data.message + ". Favor tentar novamente!")
+            cleanFields();
+        })
+        
     }
 
     return (
         <Container>
             <ContainerHeader>
                 <h1>Área Administrativa</h1>
-                <button onClick={goBack}>Voltar</button>
+                <ButtonGoBack />
             </ContainerHeader>
             <Main>
                 <h1>Fazer Login: </h1>

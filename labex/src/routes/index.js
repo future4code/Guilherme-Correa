@@ -5,6 +5,7 @@ import { ApplicationFormPage } from '../pages/ApplicationFormPage'
 import { LoginPage } from "../pages/LoginPage"
 import { AdminHomePage } from '../pages/AdminHomePage'
 import { CreateTripPage } from '../pages/CreateTripPage'
+import {TripDetailsPage} from '../pages/TripDetailsPage'
 
 export const Router = () => {
     return (
@@ -27,11 +28,11 @@ export const Router = () => {
                         <AdminHomePage/>
                     </Route>
                     <Route exact path='/admin/trips/create'>
-                        <CreateTripPage/>
+                        <CreateTripPage />
                     </Route>
-                    {/* <Route exact path='/admin/trips/:id'>
-                        <HomePage/>
-                    </Route> */}
+                    <Route exact path='/admin/trips/:id'>
+                        <TripDetailsPage/>
+                    </Route>
                 </Switch>
             </BrowserRouter>
      </div>

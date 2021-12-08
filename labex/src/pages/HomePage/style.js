@@ -29,6 +29,14 @@ export const ContainerButton = styled.div`
 
     button {
         margin: 5px;
-        padding: 5px;
+        padding: 7px;
+        border-radius: 15px;
+        border-color: none;
     }
+`
+export const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `

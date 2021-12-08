@@ -34,40 +34,26 @@ export const Main = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    width: 70vw;
-    background: #1e1e1e;
-    color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 10px;
-    padding: 15px;
-
-    h1 {
-        margin: 5px;
-
-    }
     form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
+        border: 1px solid gray;
+        box-shadow: 1px 2px 1px gray;
+        padding: 10px;
     }
     select, input, option {
-        width: 90%;
-        margin: 5px;
-        padding: 7px;
+        width: 70%;
+        margin: 3px;
+        padding: 5px;
         border-radius: 20px;
         
     }
-    select {
-        width: 91%;
-    }
     button {
-        margin: 7px;
+        margin: 3px;
         padding: 3px;
         border-radius: 10px;
-        width: 20%;
+        width: 70%;
     }
 `

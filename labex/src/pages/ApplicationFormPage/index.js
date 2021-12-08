@@ -1,13 +1,12 @@
 import {Container, ContainerHeader, Main} from './style'
-import { useHistory } from 'react-router'
-import { useEffect, useState } from 'react'
 import { useForm } from '../../hooks/useForm'
 import axios from 'axios'
 import {BASE_URL_API} from '../../constants/URL_API'
 import { useTripList } from '../../hooks/useTripList'
+import {ButtonGoBack} from '../../components/ButtonGoBack'
 
 export const ApplicationFormPage = () => {
-    const trips = useTripList()
+    const {trips} = useTripList()
     const {form, onChange, cleanFields} = useForm(
         {
             trip: null, 
@@ -18,12 +17,6 @@ export const ApplicationFormPage = () => {
             country: "" 
         }
     )
-
-
-    const history = useHistory()
-    const goBack = () => {
-        history.goBack()
-    }
 
     const ApplyToTrip = (ev) => {
         ev.preventDefault()
@@ -37,6 +30,9 @@ export const ApplicationFormPage = () => {
         }
         axios
         .post(`${BASE_URL_API}guilherme-banu/trips/${form.trip.id}/apply`, body)
+        .then((response) => {
+            console.log("Formulario enviado", response.data.message)
+        })
 
         cleanFields();
     }
@@ -45,7 +41,7 @@ export const ApplicationFormPage = () => {
         <Container>
             <ContainerHeader>
                 <h1>Inscreva-se para uma viagem</h1>
-                <button onClick={goBack}>Voltar</button>
+                <ButtonGoBack />
             </ContainerHeader>
             <Main>
                 <form onSubmit={ApplyToTrip}>
@@ -56,7 +52,7 @@ export const ApplicationFormPage = () => {
                     >
                         <option>Escolha uma Viagem</option>
                         {trips.map((trip) =>{
-                            return <option value={trip}>{trip.name}</option>
+                            return <option key={trip.id} value={trip}>{trip.name}</option>
                         })}
                         
                     </select>

@@ -1,6 +1,6 @@
-import {ContainerHomePage, ContainerButton, ContainerImg} from './style'
+import {ContainerHomePage, ContainerButton, ContainerImg, Main} from './style'
 import { useHistory } from 'react-router'
-
+import { CardHome } from '../../components/CardHome'
 export const HomePage = () => {
     const history = useHistory()
 
@@ -20,6 +20,9 @@ export const HomePage = () => {
                     <button onClick={goToAdmArea}>Área Administrativa</button>
                     <button onClick={goToTrips}>Ver Viagens</button>
                 </ContainerButton>
+                <Main>
+                    <CardHome />
+                </Main>
         </ContainerHomePage>
     )
 }

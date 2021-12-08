@@ -12,17 +12,20 @@ export const ContainerHeader = styled.div`
     align-items: center;
     position: static;
     top: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid;
     width: 100%;
     margin-bottom: 3px;
+    padding: 3px;
     h1 {
         flex-grow: 1;
         padding: 3px;
         margin: 3px;
     }
     button {
-        padding: 3px;
+        padding: 7px;
         margin: 3px;
+        border-radius: 15px;
+        border-color: none;
     }
 `
 
