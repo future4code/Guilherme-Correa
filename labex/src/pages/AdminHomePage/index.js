@@ -16,8 +16,9 @@ export const AdminHomePage = () => {
     return (
         <Container>
             <ContainerHeader>
-                <h1>Painel Administrativo</h1>
-                <ButtonGoBack />
+                <h1>Painel Administrativo - Viagens</h1>
+
+                <ButtonGoBack/>
                 <button onClick={goToCreateTripPage}>Criar Viagens</button>
                 <ButtonLogout />
             </ContainerHeader>

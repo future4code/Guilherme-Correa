@@ -4,9 +4,11 @@ import axios from 'axios'
 import {BASE_URL_API} from '../../constants/URL_API'
 import { useTripList } from '../../hooks/useTripList'
 import {ButtonGoBack} from '../../components/ButtonGoBack'
+import { useState } from 'react'
 
 export const ApplicationFormPage = () => {
     const {trips} = useTripList()
+    const [id, setId] = useState('')
     const {form, onChange, cleanFields} = useForm(
         {
             trip: null, 
@@ -17,6 +19,9 @@ export const ApplicationFormPage = () => {
             country: "" 
         }
     )
+    const onChangeSelect = (ev) => {
+        setId(ev.target.value)
+    }
 
     const ApplyToTrip = (ev) => {
         ev.preventDefault()
@@ -29,9 +34,9 @@ export const ApplicationFormPage = () => {
             country: form.country
         }
         axios
-        .post(`${BASE_URL_API}guilherme-banu/trips/${form.trip.id}/apply`, body)
+        .post(`${BASE_URL_API}guilherme-banu/trips/${id}/apply`, body)
         .then((response) => {
-            console.log("Formulario enviado", response.data.message)
+            alert("Formulario enviado com sucesso")
         })
 
         cleanFields();
@@ -46,13 +51,16 @@ export const ApplicationFormPage = () => {
             <Main>
                 <form onSubmit={ApplyToTrip}>
                     <select 
-                        name='trip'
-                        value={form.trip}
-                        onChange={onChange}
+                        onChange={onChangeSelect}
                     >
                         <option>Escolha uma Viagem</option>
                         {trips.map((trip) =>{
-                            return <option key={trip.id} value={trip}>{trip.name}</option>
+                            return <option 
+                                key={trip.id} 
+                                value={trip.id}
+                                required
+                                
+                            >{trip.name}</option>
                         })}
                         
                     </select>
@@ -62,6 +70,9 @@ export const ApplicationFormPage = () => {
                         value={form.name}
                         placeholder={'Nome'}
                         onChange={onChange}
+                        required
+                        pattern={'^.{3,}$'}
+                        title={'O nome deve possuir mais de 03 caracteres'}
                     />
                     <input 
                         name='age'
@@ -69,6 +80,8 @@ export const ApplicationFormPage = () => {
                         value={form.age}
                         placeholder={'Idade'}
                         onChange={onChange}
+                        required
+                        min={18}
                     />
                     <input 
                         name='applicationText'
@@ -76,6 +89,9 @@ export const ApplicationFormPage = () => {
                         value={form.applicationText}
                         placeholder={'Texto de Candidatura'}
                         onChange={onChange}
+                        required
+                        pattern={'^.{30,}$'}
+                        title={'O texto de candidatura deve possuir mais de 30 caracteres'}
                     />
                     <input 
                         name='profession'
@@ -83,11 +99,15 @@ export const ApplicationFormPage = () => {
                         value={form.profession}
                         placeholder={'Profissão'}
                         onChange={onChange}
+                        required
+                        pattern={'^.{10,}$'}
+                        title={'A profissão deve possuir mais de 10 caracteres'}
                     />
                     <select
                         name='country'
                         value={form.country}
                         onChange={onChange}
+                        required
                     >
                         <option>Escolha um País</option>
                         <option value="Brasil" selected="selected">Brasil</option>

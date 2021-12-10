@@ -1,35 +1,25 @@
 import {CardCandidato, ContainerButton} from './style'
-import { useState, useEffect } from "react"
 import axios from 'axios'
 import {BASE_URL_API} from '../../constants/URL_API'
 
 export const CandidatesCard = (props) => {
-    const [decide, setDecide] = useState(false)
     const traveler = props.candidates
-    console.log("Candidatos", traveler)
-
-    const decideCandidate = (id) => {
+    const tripId = props.tripId
+    const decideCandidate = (id, decide) => {
         const body = {
-            aprove: decide
+            approve: decide
         }
-
         axios
-        .put(`${BASE_URL_API}guilherme-banu/trips/${id}/apply`, body,
+        .put(`${BASE_URL_API}guilherme-banu/trips/${tripId}/candidates/${id}/decide`, body,
         {
-            headers: {auth:localStorage.getItem('token')}
+            headers: {
+                auth: window.localStorage.getItem('token')
+            }
         })
         .then((response) => {
-            console.log("decide", response.data)
-            setDecide(true)
+            
         })
     }
-
-    const onClickDecide = () =>{
-        decideCandidate()
-    }
-
-
-
 
     return (
         <div>
@@ -52,8 +42,8 @@ export const CandidatesCard = (props) => {
                             <span>Texto de Candidatura: </span><span class="conteudo">{data.applicationText}</span>
                         </div>
                         <ContainerButton>
-                            <button onClick={onClickDecide}>Aprovar</button>
-                            <button>Reprovar</button>
+                            <button onClick={() => decideCandidate(data.id, true)}>Aprovar</button>
+                            <button onClick={() => decideCandidate(data.id, false)}>Reprovar</button>
                         </ContainerButton>
                     </CardCandidato>
                 )

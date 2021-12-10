@@ -38,7 +38,8 @@ export const CardTripsDetails = (props) => {
                         <ContainerPendentes>
                             <h3>Candidatos Pendentes</h3>
                             <CandidatesCard 
-                                candidates={trip}/>
+                                candidates={trip}
+                                tripId={trip.id}/>
                         </ContainerPendentes>
 
                         <ContainerAprovados>

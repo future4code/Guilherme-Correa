@@ -40,8 +40,10 @@ export const CardCandidateAdm = () => {
                         return (
                             <CardList key={trip.id}>
                                 <h3>{trip.name}</h3>
-                                <button onClick={()=> onClickDelete(trip.id)}>Deletar</button>
-                                <button onClick={()=> onClickDetails(trip.id)}>Detalhes</button>
+                                <div>
+                                    <button onClick={()=> onClickDelete(trip.id)}>Deletar</button>
+                                    <button onClick={()=> onClickDetails(trip.id)}>Mais</button>
+                                </div>
                             </CardList>
                         )
                     })}

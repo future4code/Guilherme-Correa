@@ -22,10 +22,31 @@ export const ContainerHeader = styled.div`
         margin: 3px;
     }
     button {
-        padding: 7px;
-        margin: 3px;
-        border-radius: 15px;
-        border-color: none;
+        margin: 0 5px 0 5px;
+        outline: none;
+        display: block;
+        border: 0;
+        font-size: 16px;
+        line-height: 1;
+        padding: 10px 30px;
+        border-radius: 30px;
+        background: #1e1e1e;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s linear;
+    }
+    button:hover, focus{
+        background: #343333;
+    }
+    button:active{
+        background: #282828;
+    }
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        display: flex;
+        flex-direction: column;
+        button {
+            margin: 3px;
+        }
     }
 `
 
@@ -57,17 +78,29 @@ export const Main = styled.div`
     select, input, option {
         width: 90%;
         margin: 5px;
-        padding: 7px;
+        padding: 10px 0;
         border-radius: 20px;
+        text-indent: 10px;
         
     }
-    select {
-        width: 91%;
-    }
     button {
-        margin: 7px;
-        padding: 3px;
-        border-radius: 10px;
-        width: 20%;
+        margin: 10px 5px 10px 5px;
+        outline: none;
+        display: block;
+        border: 0;
+        font-size: 16px;
+        line-height: 1;
+        padding: 10px 30px;
+        border-radius: 30px;
+        background: #343333;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s linear;
+    }
+    button:hover, focus{
+        background: #656565;
+    }
+    button:active{
+        background: #20262d ;
     }
 `

@@ -28,10 +28,25 @@ export const ContainerButton = styled.div`
     align-items: center;
 
     button {
-        margin: 5px;
-        padding: 7px;
-        border-radius: 15px;
-        border-color: none;
+        margin: 15px 10px 15px 10px;
+        outline: none;
+        display: block;
+        border: 0;
+        font-size: 16px;
+        line-height: 1;
+        padding: 10px 30px;
+        border-radius: 30px;
+        background: #1e1e1e;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+    button:hover, focus{
+        background: #343333;
+    }
+    button:active{
+        background: #282828;
     }
 `
 export const Main = styled.div`

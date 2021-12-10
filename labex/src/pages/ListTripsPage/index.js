@@ -18,6 +18,7 @@ export const ListTripsPage = () => {
                 <button onClick={goToApplicationForm}>Inscrever-se</button>
             </ContainerHeader>
             <Main>
+                
                 <CardListTrip />
             </Main>
         </Container>
